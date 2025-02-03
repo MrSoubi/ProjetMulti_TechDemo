@@ -23,9 +23,9 @@ public class Projectile : MonoBehaviour
 		Invoke(nameof(Deactivate), lifetime);
 	}
 
-	public void Launch(Vector2 direction)
+	public void Start()
 	{
-		rb.linearVelocity = direction.normalized * speed;
+		rb.linearVelocity = transform.up * speed;
 	}
 
 	private void OnProjectileHit()
@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
 
 	private void Deactivate()
 	{
-		CancelInvoke(); // Annule la destruction automatique si d�sactiv� avant le lifetime
-		gameObject.SetActive(false); // Compatible avec le pooling
+		CancelInvoke(); // Annule la destruction automatique si désactivé avant le lifetime
+		Destroy(gameObject);
 	}
 }

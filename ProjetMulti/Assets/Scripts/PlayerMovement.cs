@@ -1,42 +1,26 @@
 using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
-
-// Code écris normalement puis traité par ChatGPT avec le prompt suivant :
-// "En repartant de mon code, clean les noms de variables et revois l'agencement du code, mais ne change rien à la structure et au fonctionnement. N'essaye pas d'améliorer le code."
 
 public class PlayerMovement : MonoBehaviour
 {
-	[SerializeField] private PlayerInput playerInput;
 	[SerializeField] private Rigidbody2D rb;
 	[SerializeField] private float moveSpeed;
-	[SerializeField] private float dashForce = 10f;
-	[SerializeField] private float dashCooldown = 2f;
-	[SerializeField] private AnimationCurve dashCurve;
 	[SerializeField] private float maxSpeed;
+
+	[SerializeField] private bool allowDash = false;
+
+	[ShowIf("allowDash")]
+	[SerializeField] private float dashCooldown = 2f;
+	[ShowIf("allowDash")]
+	[SerializeField] private AnimationCurve dashCurve;
+	
 
 	private int verticalInput, horizontalInput;
 	private float dashTimer;
 	private bool isDashing;
 	private bool dashRequested;
 	private Coroutine dashCoroutine;
-
-	private void OnEnable()
-	{
-		playerInput.onMoveUp.AddListener(OnMoveUp);
-		playerInput.onMoveDown.AddListener(OnMoveDown);
-		playerInput.onMoveLeft.AddListener(OnMoveLeft);
-		playerInput.onMoveRight.AddListener(OnMoveRight);
-		playerInput.onDash.AddListener(OnDashInput);
-	}
-
-	private void OnDisable()
-	{
-		playerInput.onMoveUp.RemoveListener(OnMoveUp);
-		playerInput.onMoveDown.RemoveListener(OnMoveDown);
-		playerInput.onMoveLeft.RemoveListener(OnMoveLeft);
-		playerInput.onMoveRight.RemoveListener(OnMoveRight);
-		playerInput.onDash.RemoveListener(OnDashInput);
-	}
 
 	private void Start()
 	{
@@ -76,13 +60,16 @@ public class PlayerMovement : MonoBehaviour
 		verticalInput = 0;
 	}
 
-	private void OnMoveUp() => verticalInput = 1;
-	private void OnMoveDown() => verticalInput = -1;
-	private void OnMoveLeft() => horizontalInput = -1;
-	private void OnMoveRight() => horizontalInput = 1;
+	public void OnMoveUp() => verticalInput = 1;
+	public void OnMoveDown() => verticalInput = -1;
+	public void OnMoveLeft() => horizontalInput = -1;
+	public void OnMoveRight() => horizontalInput = 1;
 
-	private void OnDashInput()
+	public void OnDashInput()
 	{
+		if (!allowDash)
+			return;
+
 		if (dashTimer >= dashCooldown)
 			dashRequested = true;
 	}

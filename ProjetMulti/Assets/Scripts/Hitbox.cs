@@ -12,7 +12,9 @@ public class Hitbox : MonoBehaviour
 		if (hurtbox != null)
 		{
 			hurtbox.ReceiveHit(damage);
-			OnHit?.Invoke(); // Notifie le projectile qu'il doit se désactiver
-		}
-	}
+            OnHit?.Invoke();
+        }
+
+        //Destroy(gameObject);
+    }
 }

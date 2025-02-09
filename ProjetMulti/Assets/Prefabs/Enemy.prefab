@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 814481317220864934}
   - component: {fileID: 193911729845887297}
   - component: {fileID: 4100336978101903128}
+  - component: {fileID: 3091564068157052106}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -102,6 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f58884fc4d5ffa48bb69196abcc9d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  harvesterPosition: {fileID: 11400000, guid: ef76d8673f5eda044b261b9c3bb757b9, type: 2}
+  protectorPosition: {fileID: 11400000, guid: 9b9b0fafa1b0edb4dae0b10ed61cde22, type: 2}
+  harassementDistanceThreshold: 5
+  agent: {fileID: 3091564068157052106}
 --- !u!114 &193911729845887297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,3 +159,25 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!195 &3091564068157052106
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705463515836752508}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+	public RSO_PlayerPosition RSO_Position;
+
 	[SerializeField] private Rigidbody2D rb;
 	[SerializeField] private float moveSpeed;
 	[SerializeField] private float maxSpeed;
@@ -61,7 +63,10 @@ public class PlayerMovement : MonoBehaviour
 
 		horizontalInput = 0;
 		verticalInput = 0;
-	}
+
+		RSO_Position.Value = transform.position;
+
+    }
 
 	public void OnMoveUp() => verticalInput = 1;
 	public void OnMoveDown() => verticalInput = -1;

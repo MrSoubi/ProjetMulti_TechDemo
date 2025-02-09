@@ -1,16 +1,41 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public RSO_PlayerPosition harvesterPosition, protectorPosition;
+    public float harassementDistanceThreshold = 5;
+    public NavMeshAgent agent;
+
+    private void OnEnable()
     {
-        
+        harvesterPosition.onValueChanged += OnHarvesterMoved;
+        protectorPosition.onValueChanged += OnProtectorMoved;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        harvesterPosition.onValueChanged -= OnHarvesterMoved;
+        protectorPosition.onValueChanged -= OnProtectorMoved;
+    }
+
+    private void OnHarvesterMoved(Vector3 newPosition)
+    {
+        float distance = (newPosition - transform.position).magnitude;
+
+        if (distance < harassementDistanceThreshold)
+        {
+            agent.destination = newPosition;
+        }
+    }
+
+    private void OnProtectorMoved(Vector3 newPosition)
+    {
+        float distance = (newPosition - transform.position).magnitude;
+
+        if (distance < harassementDistanceThreshold)
+        {
+            agent.destination = newPosition;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -5,20 +6,25 @@ public class Projectile : MonoBehaviour
 	[SerializeField] private float speed = 10f;
 	[SerializeField] private float lifetime = 3f;
 	private Rigidbody2D rb;
-	private Hitbox hitbox;
+	public int damage = 1;
 
+	public LayerMask wallMask;
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
-		hitbox = GetComponent<Hitbox>();
-
-		if (hitbox != null)
-		{
-			hitbox.OnHit += OnProjectileHit;
-		}
 	}
 
-	private void OnEnable()
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+		if (collision.gameObject.GetComponent<HealthComponent>() != null)
+		{
+			collision.gameObject.GetComponent<HealthComponent>().TakeDamage(damage);
+		}
+
+		Deactivate();
+    }
+
+    private void OnEnable()
 	{
 		Invoke(nameof(Deactivate), lifetime);
 	}
@@ -26,11 +32,6 @@ public class Projectile : MonoBehaviour
 	public void Start()
 	{
 		rb.linearVelocity = transform.up * speed;
-	}
-
-	private void OnProjectileHit()
-	{
-		Deactivate();
 	}
 
 	private void Deactivate()

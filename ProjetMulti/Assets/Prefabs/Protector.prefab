@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 2407339006528216339}
   - component: {fileID: 721717256611292669}
   - component: {fileID: 83377594826626184}
+  - component: {fileID: 1310474982253194803}
   m_Layer: 0
   m_Name: Protector
   m_TagString: Protector
@@ -401,6 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c43f85051d9d349b556ecfe9795709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RSO_Position: {fileID: 11400000, guid: 9b9b0fafa1b0edb4dae0b10ed61cde22, type: 2}
   rb: {fileID: 721717256611292669}
   moveSpeed: 10
   maxSpeed: 3
@@ -508,3 +510,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &1310474982253194803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783317647054927222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58bf383217def846ba02ebb72c47c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []

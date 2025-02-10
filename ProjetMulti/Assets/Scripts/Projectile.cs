@@ -1,42 +1,42 @@
-using UnityEditor;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-	[SerializeField] private float speed = 10f;
-	[SerializeField] private float lifetime = 3f;
-	private Rigidbody2D rb;
-	public int damage = 1;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float lifetime = 3f;
+    private Rigidbody rb;
+    public int damage = 1;
 
-	public LayerMask wallMask;
-	private void Awake()
-	{
-		rb = GetComponent<Rigidbody2D>();
-	}
+    public LayerMask wallMask;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Awake()
     {
-		if (collision.gameObject.GetComponent<HealthComponent>() != null)
-		{
-			collision.gameObject.GetComponent<HealthComponent>().TakeDamage(damage);
-		}
+        rb = GetComponent<Rigidbody>();
+    }
 
-		Deactivate();
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<HealthComponent>() != null)
+        {
+            collision.gameObject.GetComponent<HealthComponent>().TakeDamage(damage);
+        }
+
+        Deactivate();
     }
 
     private void OnEnable()
-	{
-		Invoke(nameof(Deactivate), lifetime);
-	}
+    {
+        Invoke(nameof(Deactivate), lifetime);
+    }
 
-	public void Start()
-	{
-		rb.linearVelocity = transform.up * speed;
-	}
+    public void Start()
+    {
+        rb.linearVelocity = transform.forward * speed;
+    }
 
-	private void Deactivate()
-	{
-		CancelInvoke(); // Annule la destruction automatique si désactivé avant le lifetime
-		Destroy(gameObject);
-	}
+    private void Deactivate()
+    {
+        CancelInvoke(); // Annule la destruction automatique si désactivé avant le lifetime
+        Destroy(gameObject);
+    }
 }

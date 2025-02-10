@@ -38,4 +38,9 @@ public class Enemy : MonoBehaviour
             agent.destination = newPosition;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, harassementDistanceThreshold);
+    }
 }

@@ -1,14 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Harvester : MonoBehaviour
 {
     [SerializeField] private float harvestTime = 2f; // Temps nécessaire pour récolter une ressource
     private ResourceNode currentNode; // Référence au nœud de ressources à proximité
     private bool isHarvesting = false; // Indique si une récolte est en cours
-    private bool isInputActive = false; // Indique si l'input est maintenu
 
-    private void OnTriggerEnter2D(Collider2D other)
+    [HideInInspector]
+    public UnityEvent onHarvestFinished;
+
+    private void OnTriggerEnter(Collider other)
     {
         // Vérifie si le joueur entre dans la zone d'un nœud de ressources
         ResourceNode node = other.GetComponent<ResourceNode>();
@@ -18,7 +21,7 @@ public class Harvester : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit(Collider other)
     {
         // Vérifie si le joueur quitte la zone d'un nœud de ressources
         if (currentNode != null && other.gameObject == currentNode.gameObject)
@@ -29,7 +32,6 @@ public class Harvester : MonoBehaviour
 
     public void StartHarvesting()
     {
-        isInputActive = true; // L'input est maintenu
         if (currentNode != null && !isHarvesting)
         {
             StartCoroutine(HarvestCoroutine());
@@ -38,7 +40,6 @@ public class Harvester : MonoBehaviour
 
     public void StopHarvesting()
     {
-        isInputActive = false; // L'input est relâché
         isHarvesting = false;
         StopAllCoroutines(); // Stoppe immédiatement la récolte
     }
@@ -46,14 +47,15 @@ public class Harvester : MonoBehaviour
     private IEnumerator HarvestCoroutine()
     {
         isHarvesting = true;
-        while (currentNode != null && isInputActive)
+        while (currentNode != null)
         {
             yield return new WaitForSeconds(harvestTime);
-            if (currentNode != null && isInputActive) // Vérifie que l'input est toujours actif
+            if (currentNode != null)
             {
                 currentNode.CollectResource();
             }
         }
         isHarvesting = false;
+        onHarvestFinished?.Invoke();
     }
 }

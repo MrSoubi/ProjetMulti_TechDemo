@@ -238,12 +238,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6692587205045414391}
-  - component: {fileID: 8381491925814074054}
   - component: {fileID: 544352720821579069}
   - component: {fileID: 2407339006528216339}
   - component: {fileID: 1310474982253194803}
   - component: {fileID: 1991405302212633581}
   - component: {fileID: 4013769161404134964}
+  - component: {fileID: 5282685316071775594}
+  - component: {fileID: 5979860753622897058}
   m_Layer: 0
   m_Name: Protector
   m_TagString: Protector
@@ -267,151 +268,6 @@ Transform:
   - {fileID: 7471308905800303816}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8381491925814074054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8783317647054927222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 609be09fe8a35d14d8b20f9934f94906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputs:
-  - keyCode: 122
-    onKeyDown:
-      m_PersistentCalls:
-        m_Calls: []
-    onKeyUp:
-      m_PersistentCalls:
-        m_Calls: []
-    onKey:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 544352720821579069}
-          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-          m_MethodName: OnMoveUp
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - keyCode: 115
-    onKeyDown:
-      m_PersistentCalls:
-        m_Calls: []
-    onKeyUp:
-      m_PersistentCalls:
-        m_Calls: []
-    onKey:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 544352720821579069}
-          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-          m_MethodName: OnMoveDown
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - keyCode: 113
-    onKeyDown:
-      m_PersistentCalls:
-        m_Calls: []
-    onKeyUp:
-      m_PersistentCalls:
-        m_Calls: []
-    onKey:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 544352720821579069}
-          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-          m_MethodName: OnMoveLeft
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - keyCode: 100
-    onKeyDown:
-      m_PersistentCalls:
-        m_Calls: []
-    onKeyUp:
-      m_PersistentCalls:
-        m_Calls: []
-    onKey:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 544352720821579069}
-          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-          m_MethodName: OnMoveRight
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - keyCode: 116
-    onKeyDown:
-      m_PersistentCalls:
-        m_Calls: []
-    onKeyUp:
-      m_PersistentCalls:
-        m_Calls: []
-    onKey:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2407339006528216339}
-          m_TargetAssemblyTypeName: PlayerWeapon, Assembly-CSharp
-          m_MethodName: Fire
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - keyCode: 121
-    onKeyDown:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 544352720821579069}
-          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-          m_MethodName: OnDashInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    onKeyUp:
-      m_PersistentCalls:
-        m_Calls: []
-    onKey:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &544352720821579069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,8 +290,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 9.903301
+      time: 0.012500001
+      value: 5.995773
       inSlope: -0.45840615
       outSlope: -0.45840615
       tangentMode: 0
@@ -445,11 +301,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1.5
       value: 3
-      inSlope: -14.30272
-      outSlope: -14.30272
+      inSlope: -5.933652
+      outSlope: -5.933652
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.024891933
+      inWeight: 0.075630225
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -535,3 +391,118 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5282685316071775594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783317647054927222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0d7eaa1c03107524d897b4913572f03a, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5979860753622897058}
+        m_TargetAssemblyTypeName: PlayerDeviceHandler, Assembly-CSharp
+        m_MethodName: OnDeviceLost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5979860753622897058}
+        m_TargetAssemblyTypeName: PlayerDeviceHandler, Assembly-CSharp
+        m_MethodName: OnDeviceRegained
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 544352720821579069}
+        m_TargetAssemblyTypeName: PlayerMovement, Game
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e640eaf6-e24d-4ab8-8239-26439fe37cc6
+    m_ActionName: 'PlayerControl/Move[/XInputControllerWindows/leftStick]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 544352720821579069}
+        m_TargetAssemblyTypeName: PlayerMovement, Game
+        m_MethodName: OnLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cf4ff3fb-72de-4e5c-bb4b-d2866afd7e02
+    m_ActionName: 'PlayerControl/Look[/XInputControllerWindows/rightStick]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2407339006528216339}
+        m_TargetAssemblyTypeName: PlayerWeapon, Game
+        m_MethodName: Fire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fb15546d-2f02-4643-bedc-05637b14859f
+    m_ActionName: 'PlayerControl/Shoot[/XInputControllerWindows/rightTrigger]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: PlayerControl
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &5979860753622897058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783317647054927222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a82936201017b74fa0d0e96ec62cbb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killDelayAfterDeviceLost: 3

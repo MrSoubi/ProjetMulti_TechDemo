@@ -1,10 +1,14 @@
 using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     public RSO_PlayerPosition RSO_Position;
+
+    PlayerInput playerInput;
+    int playerIndex;
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveSpeed;
@@ -25,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
+        playerIndex = playerInput.playerIndex;  // Numéro du joueur
+
         if (allowDash)
         {
             dashCurve.keys[dashCurve.length - 1].value = maxSpeed;
@@ -60,23 +67,24 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        moveInput = Vector3.zero;
-        lookInput = Vector3.zero;
-
         RSO_Position.Value = transform.position;
     }
 
-    public void Move(Vector2 direction)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = direction;
+        if (!IsThisPlayer(context)) return;
+
+        moveInput = context.ReadValue<Vector2>();
     }
 
-    public void Look(Vector2 direction)
+    public void OnLook(InputAction.CallbackContext context)
     {
-        lookInput = direction;
+        if (!IsThisPlayer(context)) return;
+
+        lookInput = context.ReadValue<Vector2>();
     }
 
-    public void OnDashInput()
+    public void OnDash()
     {
         if (!allowDash)
             return;
@@ -99,5 +107,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         isDashing = false;
+    }
+
+    private bool IsThisPlayer(InputAction.CallbackContext context)
+    {
+        return context.control.device == playerInput.devices[0];
     }
 }

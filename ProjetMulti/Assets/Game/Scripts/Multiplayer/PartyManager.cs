@@ -14,6 +14,10 @@ public class PartyManager : MonoBehaviour
         newPlayer.transform.position = spawnTransform.position;
         newPlayer.transform.rotation = spawnTransform.rotation;
 
+        // I don't understand why but it's needed to set the position and rotation of the Rigidbody too
+        newPlayer.GetComponent<Rigidbody>().position = spawnTransform.position;
+        newPlayer.GetComponent<Rigidbody>().rotation = spawnTransform.rotation;
+
         playerSpawn.onTrigger?.Invoke(newPlayer.transform);
 
         Debug.Log(newPlayer.name + " joined the game!");

@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 4013769161404134964}
   - component: {fileID: 5282685316071775594}
   - component: {fileID: 5979860753622897058}
+  - component: {fileID: 647638550495334897}
   m_Layer: 0
   m_Name: Protector
   m_TagString: Protector
@@ -337,10 +338,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58bf383217def846ba02ebb72c47c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 5
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 647638550495334897}
+        m_TargetAssemblyTypeName: PlayerDeathHandler, Game
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &1991405302212633581
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -506,3 +519,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killDelayAfterDeviceLost: 3
+--- !u!114 &647638550495334897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783317647054927222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac45440e82069314b8f2c3ea8eaa45cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private float lifetime = 3f;
-    private Rigidbody rb;
-    public int damage = 1;
+    [SerializeField] float speed = 10f;
+    [SerializeField] float lifetime = 3f;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] int damage = 1;
 
-    public LayerMask wallMask;
+    [SerializeField] LayerMask wallMask;
 
     private void Awake()
     {
@@ -16,9 +16,10 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<HealthComponent>() != null)
+        var healthComponent = collision.gameObject.GetComponent<HealthComponent>();
+        if (healthComponent != null)
         {
-            collision.gameObject.GetComponent<HealthComponent>().TakeDamage(damage);
+            healthComponent.TakeDamage(damage);
         }
 
         Deactivate();

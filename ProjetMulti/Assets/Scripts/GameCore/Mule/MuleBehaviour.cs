@@ -5,11 +5,9 @@ using UnityEngine.AI;
 
 public class MuleBehaviour : MonoBehaviour
 {
-    public List<ResourceNode> resources;
-    public NavMeshAgent agent;
-    public Harvester harvester;
-
-    public int resourceIndex = 0;
+    public List<ResourceNode> resources; // Pas bon, à changer.
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] Harvester harvester;
 
     private void OnEnable()
     {
@@ -34,16 +32,18 @@ public class MuleBehaviour : MonoBehaviour
 
     void GoToNextNode()
     {
-        resourceIndex++;
-
-        if (resourceIndex >= resources.Count)
+        if (resources.Count == 0)
         {
             return;
         }
 
-        agent.isStopped = false;
-        agent.destination = resources[resourceIndex].transform.position;
+        resources.RemoveAt(0);
 
-        Debug.Log("go to next node");
+        if (resources.Count > 0)
+        {
+            agent.isStopped = false;
+            agent.destination = resources[0].transform.position;
+            Debug.Log("go to next node");
+        }
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 public class UI_Resources : MonoBehaviour
 {
     public RSO_ResourceCount resourceCount;
-    public TextMeshProUGUI text;
+
+    [SerializeField] TextMeshProUGUI text;
 
     private void OnEnable()
     {
@@ -25,5 +26,4 @@ public class UI_Resources : MonoBehaviour
     {
         UpdateText(resourceCount.Value);
     }
-
 }

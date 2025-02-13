@@ -7,17 +7,15 @@ public class PlayerWeapon : MonoBehaviour
 	[SerializeField] private float fireRate = 0.2f; // Cadence de tir
 
 	PlayerInput playerInput;
-	int playerIndex;
 
 	private float fireCooldown;
 	private bool isFiring;
 
-    public GameObject projectilePrefab;
+    [SerializeField] GameObject projectilePrefab;
 
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
-        playerIndex = playerInput.playerIndex;  // Numéro du joueur
     }
 
     private void Update()

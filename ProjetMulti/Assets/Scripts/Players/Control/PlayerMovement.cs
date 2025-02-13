@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     public RSO_PlayerPosition RSO_Position;
 
     PlayerInput playerInput;
-    int playerIndex;
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveSpeed;
@@ -24,13 +23,11 @@ public class PlayerMovement : MonoBehaviour
     private float dashTimer;
     private bool isDashing;
     private bool dashRequested;
-    private Coroutine dashCoroutine;
     private Vector2 moveInput, lookInput;
 
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
-        playerIndex = playerInput.playerIndex;  // Numéro du joueur
 
         if (allowDash)
         {
@@ -48,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashRequested)
         {
-            dashCoroutine = StartCoroutine(DashCoroutine());
+            StartCoroutine(DashCoroutine());
             dashRequested = false;
             dashTimer = 0f;
         }
@@ -72,14 +69,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (!IsThisPlayer(context)) return;
+        if (!IsThisPlayer(context))
+            return;
 
         moveInput = context.ReadValue<Vector2>();
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        if (!IsThisPlayer(context)) return;
+        if (!IsThisPlayer(context))
+            return;
 
         lookInput = context.ReadValue<Vector2>();
     }

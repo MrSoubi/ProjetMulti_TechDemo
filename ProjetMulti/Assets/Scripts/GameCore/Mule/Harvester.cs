@@ -4,12 +4,16 @@ using UnityEngine.Events;
 
 public class Harvester : MonoBehaviour
 {
-    [SerializeField] private float harvestTime = 2f; // Temps nécessaire pour récolter une ressource
-    private ResourceNode currentNode; // Référence au nœud de ressources à proximité
-    private bool isHarvesting = false; // Indique si une récolte est en cours
+    [SerializeField] float harvestTime = 2f; // Temps nécessaire pour récolter une ressource
+
+    // Un seul node n'est référencé à la fois
+    // Dans les niveaux les nodes ne seront jamais assez proches pour que cela pose problème
+    ResourceNode currentNode; // Référence au nœud de ressources à proximité
+
+    bool isHarvesting = false; // Indique si une récolte est en cours
 
     [HideInInspector]
-    public UnityEvent onHarvestFinished;
+    public UnityEvent onHarvestFinished; // A remplacer par un RSE (ou utiliser le RSO ResourceCount ?)
 
     private void OnTriggerEnter(Collider other)
     {
@@ -50,11 +54,13 @@ public class Harvester : MonoBehaviour
         while (currentNode != null)
         {
             yield return new WaitForSeconds(harvestTime);
+
             if (currentNode != null)
             {
                 currentNode.CollectResource();
             }
         }
+
         isHarvesting = false;
         onHarvestFinished?.Invoke();
     }

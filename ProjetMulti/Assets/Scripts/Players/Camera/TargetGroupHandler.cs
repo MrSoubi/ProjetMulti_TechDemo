@@ -14,7 +14,7 @@ public class TargetGroupHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        
+        playerSpawn.onTrigger -= AddTransformToTargetGroup;
     }
 
     void AddTransformToTargetGroup(Transform transform)

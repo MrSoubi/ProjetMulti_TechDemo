@@ -7,8 +7,6 @@ public class PlayerDeviceHandler : MonoBehaviour
 {
     [SerializeField] float killDelayAfterDeviceLost;
 
-    Coroutine deviceLostCoroutine;
-
     public void OnDeviceLost(PlayerInput playerInput)
     {
         StartCoroutine(OnDeviceLostCoroutine(playerInput));
